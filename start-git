@@ -26,3 +26,10 @@ git reset HEAD FILE   //强力后悔药：可以把已经提交到暂存区的�
 //添加远程仓库，很兴奋，有木有，有木有？
 ssh-keygen -t rsa -C "StivenYang626@gmail.com"
 //生成秘钥以后，需要把公钥添加到咱们的github setting或者码云 setting的ssh项里面，目的是让你可以为所欲为的修改远程仓库，哈哈，以后修改可是要小心了（有后悔药可以吃，不怕不怕啦）
+
+//把本地的仓库和远程的仓库进行关联，方便在不同的机器上面进行开发这个项目
+git remote add origin git@github.com:StivenYang/git.git
+
+git push -u origin master //-u参数是在第一次，也就是远程repo为空的时候使用的，目的是同步master分支，在以后的push和pull时可以简化命令
+
+
