@@ -23,3 +23,6 @@ git reset HEAD FILE   //强力后悔药：可以把已经提交到暂存区的�
 //git的工作区，暂存区，和仓库repod的理解
 
 
+//添加远程仓库，很兴奋，有木有，有木有？
+ssh-keygen -t rsa -C "StivenYang626@gmail.com"
+//生成秘钥以后，需要把公钥添加到咱们的github setting或者码云 setting的ssh项里面，目的是让你可以为所欲为的修改远程仓库，哈哈，以后修改可是要小心了（有后悔药可以吃，不怕不怕啦）
