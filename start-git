@@ -17,6 +17,8 @@ git diff FILE
 //git的版本控制，各种吃后悔药，哈哈
 git reset --hard CommitId
 git reglog
+git checkout -- FILE   //又是一个后悔药：撤销工作区制定文件做过的修改, -- 可是很重要的，不要忘记写了，不然就成了切换分支了哦:-)
+git reset HEAD FILE   //强力后悔药：可以把已经提交到暂存区的修改给撤销，舒服吧？
 
 //git的工作区，暂存区，和仓库repod的理解
 
