@@ -32,4 +32,7 @@ git remote add origin git@github.com:StivenYang/git.git
 
 git push -u origin master //-u参数是在第一次，也就是远程repo为空的时候使用的，目的是同步master分支，在以后的push和pull时可以简化命令
 
+//克隆远程的仓库到本地
+git clone git@github.com:StivenYang/git.git
+
 
