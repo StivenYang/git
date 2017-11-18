@@ -18,4 +18,6 @@ git diff FILE
 git reset --hard CommitId
 git reglog
 
+//git的工作区，暂存区，和仓库repod的理解
+
 
