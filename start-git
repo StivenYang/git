@@ -1,11 +1,21 @@
+//初始化仓库的用户信息，——global选项是用来偷懒的，以后新建仓库就不需要重新制定了
 git config --global user.name "StivenYang"
 git config --global user.email "StivenYang626@gmail.com"
 
+//初始化当前目录作为repod
 git init
 
+//向本地仓库提交更改
 git commit -m "xxx"
 
+//查看当前是否有更改需要commit
 git status
 
+//查看FILE是否被更改，更改的哪几行
 git diff FILE
+
+//git的版本控制，各种吃后悔药，哈哈
+git reset --hard CommitId
+git reglog
+
 
