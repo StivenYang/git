@@ -1,0 +1,6 @@
+git config --global user.name "StivenYang"
+git config --global user.email "StivenYang626@gmail.com"
+
+git init
+
+
