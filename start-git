@@ -73,4 +73,30 @@ hello world!
 //如果想要在删除分支以后保存你在分支上的操作历史信息，你可能需要关闭fast forward模式
 git merge --no-ff -m "merge with no-ff" dev
 
+//在实际的开发里面，分支的管理有以下几个基本原则
+//1.master分支应该是非常稳定的，也就是仅用来发布新的版本，
+//2.工作的的分支应该是一个dev分支，
+//3.每个人的分支应该是dev分支下面各自新建的分支
+//4.等到自己的活干完以后，然后才向dev分支发出合并请求
+
+//bug分支
+//在实际的开发中，如果开发过程中有一个bug被发现了，需要立即去修改bug & 但是我们现在的开发还没有完成 & 这时候怎么办呢？ & 使用stash功能吧 & 这个命令可以暂存工作现场，& 之后我们就可以临时创建一个分支，用来修改bug，在修改完bug并merge到对应分支后，删除这个临时分支就OK了。
+//命令实现
+git status
+git stash
+git checkout master //假定主分支上有个bug要修复
+git checkout -b issue-101 //Bug代号为101
+git add file & git commit -m "xxx" //修复bug
+git checkout master //切换到主分支
+git merge --no-ff -m "merged bug fix 101" issue-101 //合并临时分支
+git branch -d issue-101 //删除临时分支
+git checkout dev //切换到工作分支
+git status //查看工作分支是否有要提交的，因为我们保存了现场，需要在stash列表里面恢复，所以在我们没有恢复之前，应该是没有提交的，接下来是恢复现场
+git stash list //查看保存的现场列表
+git stash pop || git stash apply //用第二种方式恢复以后，stash列表中的现场不会自动删除，需要我们自己使用git stash drop来手动删除；而使用第一种方式在恢复现场的同时，也会把stash列表中保存的现场内容也删除了，很方便
+git stash list //再次查看stash列表，确保操作无误
+//也可以多次stash，恢复的时候，先使用git stash list查看，然后再恢复，命令如下：
+git stash apply stash@{index} //index为list中显示的下标
+
+
 
