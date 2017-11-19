@@ -1,0 +1,13 @@
+1.添加SSH的isa pub
+2.git remote add 
+3.git remote -v
+4.git remote rm origin
+5.git remote add origin git@gitee.com:StivenYang/git.git
+6.git remote -v
+//添加两个远程库
+7.git remote rm origin
+8.git remote add github git@github.com:StivenYang/git.git
+9.git remote add gitee git@gitee.com:StivenYang/git.git
+10.git push github master
+11.git push gitee master
+
