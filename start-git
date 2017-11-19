@@ -98,5 +98,14 @@ git stash list //再次查看stash列表，确保操作无误
 //也可以多次stash，恢复的时候，先使用git stash list查看，然后再恢复，命令如下：
 git stash apply stash@{index} //index为list中显示的下标
 
+//Feature分支
+//添加新功能时，为了不把主分支搞乱，最好新建一个开发分支，开发分支完成之后，合并，删除feature分支
+git checkout -b feature-vulcan  //新建分支
+git add file & git commit -m "xxx" //完成开发并提交
+git checkout dev //切回dev分支，准备合并
+git merge --no-ff -m "xxx" feature-vulcan //合并分支
+git branch -d feature-vulcan //删除分支
+//如果在开发过程中接到上级命令，新功能取消，那么需要省略合并步骤，直接删除该分支
+git branch -D feature-vulcan //强制删除该分支，即使修改没有提交
 
-
+//
