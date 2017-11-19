@@ -69,3 +69,8 @@ hello world!
 >>>>>>> dev
 也就是这个文件会把两次修改的都列出来让你选择，你需要删除某些你不用的，然后再次进行提交就行了，很方便，有木有？最后别忘了删除不用的分支哦。
 
+//git的Fast forward模式以及禁用该模式
+//如果想要在删除分支以后保存你在分支上的操作历史信息，你可能需要关闭fast forward模式
+git merge --no-ff -m "merge with no-ff" dev
+
+
