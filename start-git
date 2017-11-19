@@ -145,3 +145,30 @@ git push origin --tags  //推送所有尚未推送到远程的本地标签
 git push origin :refs/tags/v0.9  //推送删除标签到远程repo
 
 
+
+//////////////////////////////////////////
+//git的配置
+//////////////////////////////////////////
+git comfig --global color.ui true   //显示颜色
+
+//忽略特殊文件
+在git的工作目录下创建一个特殊的.gitignore文件，把要忽略的文件丢进去就好了
+.gitignore的格式可以仿照https://github.com/github/gitignore书写
+//强制添加文件到Git
+git add -f filename
+
+//检查哪个规则错了
+git check-ignore -v filename
+
+//配置别名
+git config --global alias.st status  //把status重建别名st
+git config --global alias.co checkout  //为checkout重建别名co
+git config --global alias.ci commit  //为commit重建别名ci
+git config --global alias.br branch  //为branch重建别名br
+
+git config --global alias.unstage 'reset HEAD'  //为reset重建别名unstage
+git config --global alias.last 'log -1'  //为log -1重建别名last，显示最近一次提交的信息
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+//配置文件(.git/config)
+//当前用户的Git配置文件(用户主目录下的.gitconfig)
