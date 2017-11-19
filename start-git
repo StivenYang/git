@@ -108,4 +108,18 @@ git branch -d feature-vulcan //删除分支
 //如果在开发过程中接到上级命令，新功能取消，那么需要省略合并步骤，直接删除该分支
 git branch -D feature-vulcan //强制删除该分支，即使修改没有提交
 
-//
+//查看远程库的信息
+git remote
+git remote -v
+//推送分支
+git push origin master
+git push origin dev
+//如果推送失败，因为远程分支比本地更新，需要先使用git pull试图合并
+git pull 
+//如果合并有冲突，则解决冲突，并在本地提交
+//如果没有冲突或者解决掉冲突后，再推送到远程仓库
+git push origin branch-name
+//如果git pull提示“no tracking informatiom",说明本地分支和远程分支的链接关系没有创建，用命令如下：
+git branch --set-upstream branch-name origin/branch-name
+
+
