@@ -122,4 +122,26 @@ git push origin branch-name
 //如果git pull提示“no tracking informatiom",说明本地分支和远程分支的链接关系没有创建，用命令如下：
 git branch --set-upstream branch-name origin/branch-name
 
+/////////////////////////////////////////////
+//下面是标签，主要用来管理版本
+/////////////////////////////////////////////
+//切换到需要打标签的分支上
+git branch  //查看分支
+git checkout master  //假如要打标签的分支是主分支
+git tag v1.0  //给当前分支打上标签
+git tag  //查看当前所有的标签
+//如果忘了打标签，现在想起来了，怎么打？
+git log --pretty=oneline --abbrev-commit  //找出历史提交的commit id
+git tag v0.9 123456  //给指定的版本打上标签
+git show <tagname>  //查看标签信息
+git tag -a v0.1 -m "version 0.1 released" 123456  //创建带有说明的标签
+//通过-s用私钥签名一个标签，需要先安装gpg
+git tag -s v0.2 -m "signed version 0.2 released" 123456
+//用PGP签名的标签是不可伪造的，因为可以验证PGP签名。
+/*标签的管理*/
+git tag -d v0.1  //删除标签
+git push origin v1.0  //推送标签到远程仓库
+git push origin --tags  //推送所有尚未推送到远程的本地标签
+git push origin :refs/tags/v0.9  //推送删除标签到远程repo
+
 
