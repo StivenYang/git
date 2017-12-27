@@ -172,3 +172,8 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 
 //配置文件(.git/config)
 //当前用户的Git配置文件(用户主目录下的.gitconfig)
+
+/************************************************下面是使用git时候出现的一些问题***********************************************
+1.在新建git时候，选择了add gitignore和add license，然后在本地建好git仓库后，想要把远程仓库和本地仓库关联，失败了（错误为：error: failed to push some refs to 'git@github.com:StivenYang/Blog.git'
+）
+解决办法：在关联之前要把远程仓库的文件也同步到本地，然后才能进行关联。先使用git pull --rebase origin master，然后再git push -u origin master即可关联并上传本地仓库代码到远程仓库。
