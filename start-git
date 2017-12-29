@@ -177,3 +177,5 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 1.在新建git时候，选择了add gitignore和add license，然后在本地建好git仓库后，想要把远程仓库和本地仓库关联，失败了（错误为：error: failed to push some refs to 'git@github.com:StivenYang/Blog.git'
 ）
 解决办法：在关联之前要把远程仓库的文件也同步到本地，然后才能进行关联。先使用git pull --rebase origin master，然后再git push -u origin master即可关联并上传本地仓库代码到远程仓库。
+2.git乱码问题
+https://segmentfault.com/a/1190000000578037   ，项目如果使用utf-8提交的，注意对应的设置应该为utf-8
