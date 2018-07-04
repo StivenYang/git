@@ -122,6 +122,9 @@ git push origin branch-name
 //如果git pull提示“no tracking informatiom",说明本地分支和远程分支的链接关系没有创建，用命令如下：
 git branch --set-upstream branch-name origin/branch-name
 
+//克隆指定分支
+git clone -b branch-name repo-address
+
 /////////////////////////////////////////////
 //下面是标签，主要用来管理版本
 /////////////////////////////////////////////
