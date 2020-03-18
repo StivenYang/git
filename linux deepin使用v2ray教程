@@ -1,0 +1,184 @@
+
+
+## 下载v2ray的安装包
+
+因为是正常软件使用，发布的版本基本上是很稳定的，所以可以下载最新发布版本，地址：`https://github.com/v2ray/v2ray-core/releases`
+
+下载linux版本：`v2ray-linux-64.zip`
+
+## 解压安装包
+
+```
+unzip v2ray-linux-64.zip
+cd v2ray
+```
+
+## 修改配置文件
+
+修改里面的配置文件:`config.json`
+
+主要修改`outbounds`节点下面的`settings`节点下面的`vnext`节点配置，这个相当于要连接到远端的配置。
+
+还有一个要看的是`inbounds`节点下的配置，这个相当于在本地开启的端口，如果使用代理工具的话，可以直接连接到本地的这个端口，实现上网。
+
+比较重要的就是上面的两个节点配置。其他的默认就可以。
+
+下面我贴上我正在使用的配置文件，目前还是可以使用的。`2020年03月18日21:29:50`
+
+```json
+{
+  "policy": null,
+  "log": {
+    "access": "",
+    "error": "",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "proxy",
+      "port": 10808,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "ip": null,
+        "address": null,
+        "clients": null
+      },
+      "streamSettings": null
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "23.225.57.210",
+            "port": 443,
+            "users": [
+              {
+                "id": "418048af-a293-4b99-9b0c-98ca3580dd23",
+                "alterId": 64,
+                "email": "t@t.tt",
+                "security": "auto"
+              }
+            ]
+          }
+        ],
+        "servers": null,
+        "response": null
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "www.2604919.xyz"
+        },
+        "tcpSettings": null,
+        "kcpSettings": null,
+        "wsSettings": {
+          "connectionReuse": true,
+          "path": "/footers",
+          "headers": {
+            "Host": "www.2604919.xyz"
+          }
+        },
+        "httpSettings": null,
+        "quicSettings": null
+      },
+      "mux": {
+        "enabled": true,
+        "concurrency": 8
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "vnext": null,
+        "servers": null,
+        "response": null
+      },
+      "streamSettings": null,
+      "mux": null
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "vnext": null,
+        "servers": null,
+        "response": {
+          "type": "http"
+        }
+      },
+      "streamSettings": null,
+      "mux": null
+    }
+  ],
+  "stats": null,
+  "api": null,
+  "dns": null,
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "port": null,
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "ip": null,
+        "domain": null
+      }
+    ]
+  }
+}
+```
+
+## 执行脚本启动服务
+
+```
+./v2ray
+```
+
+## 实现开机启动
+
+这边我是按照自己的目录来的，读者可以按照自己的软件目录配置：
+
+```
+# 这里配置的是当前登录用户的脚本
+echo "nohup /home/yang/Documents/software/v2ray/v2ray > /dev/null 2>&1 &" >> ~/.bashrc
+# 使配置生效
+source ~/.bashrc
+```
+
+## 使用deepin自带的代理工具进行上网
+设置-》网络-》系统代理-》手动-》然后根据上面我们配置的inbounds中的配置来进行配置，主要看协议和端口-》点击确定完成
+
+## 使用switchyomega插件上网
+首先需要自己想办法下载一个离线版的switchyomega插件，或者在可以上外网的情况下去应用商店下载该插件。
+
+然后配置插件：
+
+- 选项-》proxy-》配置`inbounds`中的ip、端口、协议-》点左边的`应用选项`
+- auto switch-》选中规则列表规则-》情景模式选择`proxy`-》默认情景模式选择`直连模式`-》规则列表设置选择`autoproxy`-》规则列表网址填`https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt`-》立即更新情景模式-》点左边的`应用选项`
+
+## 最后，提供一个目前可以白嫖的github仓库（作者真的很nice，感谢）
+
+希望使用的人可以给作者点个`star`，下面是网址：
+`https://github.com/ntkernel/lantern/blob/master/vmess.txt`
+
+## 完结撒花
